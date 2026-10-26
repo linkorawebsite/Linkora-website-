@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0a0e" />
+  <meta name="description" content="LINKORA smart NFC stands and cards — help customers connect, review, follow and pay with a tap." />
+  <title>LINKORA — Connect Smarter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0b0a0e;--panel:#17131c;--panel2:#211923;--text:#fff8ef;--muted:#b8aebc;--blue:#e8c47a;--cyan:#f1a9bd;--line:rgba(255,255,255,.1);--white:#fff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% -15%,rgba(34,113,255,.22),transparent 38%),var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(1160px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(7,11,20,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font-family:'Space Grotesk',sans-serif;font-size:1.45rem;font-weight:700;letter-spacing:.12em}.brand span{color:var(--blue)}.navlinks{display:flex;align-items:center;gap:28px;color:#c4cee0;font-size:.92rem}.navlinks a:hover{color:var(--cyan)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:12px;border:1px solid transparent;font-weight:700;transition:.2s;cursor:pointer}.btn-primary{background:linear-gradient(115deg,var(--blue),#b77945);color:white;box-shadow:0 8px 28px rgba(52,125,255,.23)}.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08)}.btn-ghost{border-color:var(--line);background:rgba(255,255,255,.035)}.btn-ghost:hover{border-color:rgba(101,230,255,.5)}
+    .hero{padding:86px 0 72px;display:grid;grid-template-columns:1.03fr .97fr;gap:55px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--cyan);font-weight:700;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase}.dot{height:7px;width:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}h1,h2,h3,p{margin-top:0}h1{font:700 clamp(2.8rem,6vw,5.25rem)/1.03 'Space Grotesk',sans-serif;letter-spacing:-.055em;margin:22px 0}.gradient{background:linear-gradient(100deg,#fff 15%,#f1c9a5 58%,#e9a8c1);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:540px;color:var(--muted);font-size:1.08rem}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.micro{margin-top:20px;color:#7f8ba3;font-size:.84rem}
+    .product-stage{position:relative;min-height:440px;display:grid;place-items:center}.glow{position:absolute;width:360px;height:360px;background:#c18a50;filter:blur(110px);opacity:.24;border-radius:50%}.stand{position:relative;width:min(340px,85%);height:390px;transform:perspective(900px) rotateY(-8deg) rotateX(2deg);border-radius:24px;border:1px solid rgba(255,255,255,.38);background:linear-gradient(140deg,rgba(255,255,255,.16),rgba(255,255,255,.025) 45%,rgba(73,149,255,.11));box-shadow:0 35px 80px rgba(0,0,0,.45),inset 0 0 35px rgba(255,255,255,.045);padding:26px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}.stand:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.14) 40%,transparent 55%);transform:translateX(-100%);animation:shine 6s infinite}.stand .tinybrand{font-size:.8rem;letter-spacing:.22em;color:#fff0d5}.tapicon{height:74px;width:74px;border:1px solid rgba(101,230,255,.65);border-radius:22px;display:grid;place-items:center;font-size:2rem;color:var(--cyan);margin:30px auto 18px;box-shadow:0 0 30px rgba(101,230,255,.12)}.stand h3{font:600 1.7rem 'Space Grotesk',sans-serif;margin-bottom:8px}.stand p{font-size:.9rem;color:#d6c8d2;margin-bottom:22px}.fakeqr{display:grid;grid-template-columns:repeat(5,8px);gap:3px;padding:9px;background:#fff;border-radius:7px}.fakeqr i{width:8px;height:8px;background:#19121a}.fakeqr i:nth-child(3n),.fakeqr i:nth-child(7n+1){background:#fff}.base{position:absolute;bottom:6px;width:270px;height:25px;border-radius:4px 4px 14px 14px;background:linear-gradient(#d7e4f6,#997b69 60%,#44313d);transform:perspective(200px) rotateX(10deg);box-shadow:0 22px 35px rgba(0,0,0,.4)}.float-tag{position:absolute;right:0;bottom:40px;padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(14,21,36,.88);box-shadow:0 14px 35px rgba(0,0,0,.25);font-size:.88rem}.float-tag b{color:var(--cyan)}
+    section{padding:76px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 38px}.section-head h2{font:700 clamp(2rem,4vw,3.15rem)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.04em;margin:14px 0}.section-head p{color:var(--muted)}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature,.card,.step{border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));border-radius:18px;padding:24px}.icon{width:44px;height:44px;display:grid;place-items:center;background:rgba(77,163,255,.12);border:1px solid rgba(77,163,255,.22);border-radius:13px;font-size:1.35rem;margin-bottom:17px}.feature h3,.card h3{font-family:'Space Grotesk',sans-serif;margin-bottom:8px}.feature p,.card p{color:var(--muted);font-size:.94rem;margin-bottom:0}
+    .products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:0;overflow:hidden}.product-art{height:210px;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,rgba(77,163,255,.23),transparent 60%),#151019;border-bottom:1px solid var(--line);position:relative}.mini-stand{width:125px;height:155px;border:1px solid rgba(255,255,255,.5);border-radius:10px;background:linear-gradient(130deg,rgba(255,255,255,.18),rgba(255,255,255,.025));box-shadow:0 18px 30px #0008;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;transform:rotate(-4deg)}.mini-stand .mini-icon{font-size:1.65rem;color:var(--cyan)}.mini-stand strong{font:600 .7rem 'Space Grotesk';letter-spacing:.07em}.mini-stand small{font-size:.55rem;color:#d7c5d0}.mini-card{width:185px;height:115px;border:1px solid rgba(255,255,255,.45);border-radius:13px;background:linear-gradient(125deg,#382535,#100d13);box-shadow:0 18px 30px #0008;transform:rotate(5deg);padding:16px;display:flex;flex-direction:column;justify-content:space-between}.mini-card strong{letter-spacing:.13em;font-family:'Space Grotesk'}.mini-card span{color:var(--cyan);font-size:.7rem}.card-body{padding:22px}.price-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 14px}.price{font:700 1.45rem 'Space Grotesk'}.pill{font-size:.72rem;color:var(--cyan);border:1px solid rgba(101,230,255,.28);background:rgba(101,230,255,.07);padding:5px 9px;border-radius:30px}.card .btn{width:100%;padding:11px}
+    .offer{border:1px solid rgba(77,163,255,.32);border-radius:24px;padding:36px;background:radial-gradient(ellipse at 90% 0%,rgba(77,163,255,.18),transparent 45%),var(--panel);display:flex;align-items:center;justify-content:space-between;gap:30px}.offer h2{font:700 clamp(1.8rem,4vw,2.7rem)/1.1 'Space Grotesk';margin:12px 0}.offer p{color:var(--muted);margin-bottom:0}.offer-price{white-space:nowrap;text-align:right}.offer-price strong{display:block;font:700 2.5rem 'Space Grotesk'}.offer-price del{color:#a99aa5;margin-right:8px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.step-number{font:700 2rem 'Space Grotesk';color:var(--blue);margin-bottom:12px}.step h3{margin-bottom:7px}.step p{margin:0;color:var(--muted);font-size:.94rem}
+    .faq{max-width:800px;margin:auto}.faq details{border-bottom:1px solid var(--line);padding:18px 0}.faq summary{cursor:pointer;font-weight:700}.faq details p{color:var(--muted);margin:12px 0 0}.contact{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:start}.contact p{color:var(--muted)}.contact-form{padding:25px;border:1px solid var(--line);background:var(--panel);border-radius:18px}.field{margin-bottom:14px}.field label{display:block;font-size:.85rem;color:#d9cbd4;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;padding:12px 13px;color:var(--text);background:#100d13;border:1px solid var(--line);border-radius:10px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}.field textarea{resize:vertical;min-height:85px}.contact-form .btn{width:100%}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:#8290a7;font-size:.85rem}.foot{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}.foot strong{color:#fff2df;letter-spacing:.12em}.disclaimer{font-size:.78rem;color:#9a8b96;margin-top:12px}
+    @keyframes shine{0%,70%,100%{transform:translateX(-120%)}85%{transform:translateX(120%)}}
+    @media(max-width:850px){.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:60px;gap:20px}.product-stage{min-height:410px}.features,.products,.steps{grid-template-columns:1fr 1fr}.contact{grid-template-columns:1fr}.offer{align-items:flex-start;flex-direction:column}.offer-price{text-align:left}.float-tag{right:1%}}
+    @media(max-width:560px){.nav{height:66px}.brand{font-size:1.2rem}.nav>.btn{padding:10px 12px;font-size:.83rem}.hero{padding-top:45px}h1{font-size:3.1rem}.product-stage{min-height:390px}.stand{height:340px}.base{width:230px}.features,.products,.steps{grid-template-columns:1fr}.feature{padding:21px}.offer{padding:25px}.offer-price strong{font-size:2.1rem}section{padding:58px 0}.float-tag{bottom:17px;font-size:.78rem}}
+  </style>
+
+<style id="linkora-premium-motion">
+/* LINKORA premium motion layer */
+:root{scroll-padding-top:90px} body{overflow-x:hidden;background-image:radial-gradient(ellipse at 80% 0%,rgba(0,208,255,.13),transparent 32%),radial-gradient(ellipse at 10% 45%,rgba(48,91,255,.10),transparent 30%),linear-gradient(180deg,#0b0a0e,#100d13 60%,#09080b)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.13;background-image:linear-gradient(rgba(100,170,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(100,170,255,.12) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 85%);animation:gridDrift 28s linear infinite}
+header{backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.logo, header strong{ text-shadow:0 0 22px rgba(101,230,255,.18)}
+.btn{position:relative;isolation:isolate;overflow:hidden;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .28s}
+.btn:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.25) 48%,transparent 70%);transform:translateX(-130%);transition:transform .65s}
+.btn:hover:before{transform:translateX(130%)}.btn-primary:hover{box-shadow:0 12px 38px rgba(52,125,255,.42);transform:translateY(-3px) scale(1.015)}
+.card{transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .4s;will-change:transform}.card:hover{transform:translateY(-8px);border-color:rgba(101,230,255,.45);box-shadow:0 24px 65px rgba(0,0,0,.28),0 0 28px rgba(48,133,255,.09)}
+.product-art:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,rgba(101,230,255,.12),transparent 70%);transform:translateX(-120%);animation:artSweep 7s ease-in-out infinite}
+.stand{animation:floatStand 6s ease-in-out infinite;transform-origin:center}.mini-stand,.mini-card{animation:miniFloat 5s ease-in-out infinite}.glow{animation:glowPulse 5s ease-in-out infinite}.float-tag{animation:tagFloat 4.5s ease-in-out infinite}
+section[id],#products,#benefits,#how,#contact{scroll-margin-top:80px}.section-head{animation:fadeUp .8s both}
+.reveal-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}.reveal-ready .reveal.is-visible{opacity:1;transform:translateY(0)}
+.field input,.field select,.field textarea{transition:border-color .25s,box-shadow .25s,background .25s}.field input:focus,.field select:focus,.field textarea:focus{box-shadow:0 0 0 3px rgba(77,163,255,.13);background:#0a1322}
+@keyframes gridDrift{to{background-position:48px 48px}}@keyframes artSweep{0%,55%,100%{transform:translateX(-120%)}75%{transform:translateX(120%)}}@keyframes floatStand{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -9px;rotate:.7deg}}@keyframes miniFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}@keyframes glowPulse{0%,100%{opacity:.18;scale:1}50%{opacity:.32;scale:1.08}}@keyframes tagFloat{0%,100%{translate:0 0}50%{translate:0 -8px}}@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal-ready .reveal{opacity:1;transform:none}}
+</style>
+<script id="linkora-reveal-motion">
+document.documentElement.classList.add('reveal-ready');
+(function(){const targets=document.querySelectorAll('.card,.benefit,.step,.contact-form,.hero>div,.section-head');targets.forEach(el=>el.classList.add('reveal'));if(!('IntersectionObserver'in window)){targets.forEach(el=>el.classList.add('is-visible'));return}const io=new IntersectionObserver(entries=>entries.forEach((entry,index)=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');io.unobserve(entry.target)}}),{threshold:.12});targets.forEach(el=>io.observe(el));})();
+</script>
+
+
+<style id="linkora-visual-experience">
+/* Luxe product visuals + lightweight animated ambient background */
+#ambient-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1;opacity:.48}
+.visual-showcase{padding:70px 0 30px}.visual-frame{position:relative;overflow:hidden;border:1px solid rgba(232,196,122,.35);border-radius:26px;background:#100d13;box-shadow:0 25px 80px rgba(0,0,0,.4),0 0 45px rgba(232,196,122,.08)}.visual-frame:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.12) 48%,transparent 70%);transform:translateX(-130%);animation:visualSweep 8s ease-in-out infinite}.visual-frame img{display:block;width:100%;height:auto;max-height:740px;object-fit:cover;transition:transform 1s ease;animation:visualZoom 24s ease-in-out infinite alternate}.visual-frame:hover img{transform:scale(1.025)}.visual-caption{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:18px;flex-wrap:wrap}.visual-caption h2{font:700 clamp(1.6rem,3vw,2.4rem)/1.1 'Space Grotesk',sans-serif;margin:0}.visual-caption p{color:var(--muted);margin:8px 0 0}.visual-badge{border:1px solid rgba(232,196,122,.35);background:rgba(232,196,122,.08);color:#f1d7a1;border-radius:99px;padding:9px 14px;font-size:.82rem;white-space:nowrap}.visual-hint{font-size:.8rem;color:#9f929e;margin-top:10px}
+@keyframes visualSweep{0%,55%,100%{transform:translateX(-130%)}75%{transform:translateX(130%)}}@keyframes visualZoom{from{transform:scale(1)}to{transform:scale(1.045)}}
+@media(prefers-reduced-motion:reduce){.visual-frame:before,.visual-frame img{animation:none!important}}
+</style>
+
+
+<style id="linkora-nfc-cards">
+.nav-actions{display:flex;align-items:center;gap:14px}
+.cart-link{position:relative;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);transition:border-color .25s,transform .25s}
+.cart-link:hover{border-color:rgba(232,196,122,.55);transform:translateY(-2px)}
+.cart-badge{position:absolute;top:-7px;right:-7px;min-width:20px;height:20px;padding:0 5px;border-radius:99px;background:var(--blue);color:#1b1306;font-size:.72rem;font-weight:700;display:grid;place-items:center}
+.cart-badge.bump{animation:bump .45s}
+@keyframes bump{40%{transform:scale(1.5)}}
+.nfc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px}
+.nfc-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:linear-gradient(150deg,rgba(255,255,255,.05),rgba(255,255,255,.012));transition:border-color .3s,box-shadow .4s}
+.nfc-card:hover{border-color:rgba(232,196,122,.45);box-shadow:0 26px 70px rgba(0,0,0,.35),0 0 30px rgba(232,196,122,.08)}
+.nfc-photo{position:relative;overflow:hidden;aspect-ratio:1364/1153;background:#100d13;perspective:900px}
+.nfc-photo img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.02);animation:nfcFloat 7s ease-in-out infinite;transition:transform .5s ease}
+.nfc-card:nth-child(even) .nfc-photo img{animation-delay:-3s}
+.nfc-card:hover .nfc-photo img{transform:scale(1.08)}
+.nfc-photo:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.22) 48%,transparent 66%);transform:translateX(-130%);animation:nfcSweep 6.5s ease-in-out infinite}
+.nfc-card:nth-child(2) .nfc-photo:after{animation-delay:1s}.nfc-card:nth-child(3) .nfc-photo:after{animation-delay:2s}.nfc-card:nth-child(4) .nfc-photo:after{animation-delay:3s}.nfc-card:nth-child(5) .nfc-photo:after{animation-delay:4s}
+.nfc-badge{position:absolute;top:14px;left:14px;z-index:2;font-size:.76rem;font-weight:700;padding:6px 12px;border-radius:99px;background:rgba(11,10,14,.78);border:1px solid rgba(232,196,122,.5);color:#f6dfae;backdrop-filter:blur(8px)}
+.nfc-wave{position:absolute;right:14px;top:14px;z-index:2;width:36px;height:36px}
+.nfc-wave i{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(232,196,122,.85);opacity:0;animation:wave 2.6s ease-out infinite}
+.nfc-wave i:nth-child(2){animation-delay:.85s}.nfc-wave i:nth-child(3){animation-delay:1.7s}
+.nfc-body{display:flex;flex-direction:column;gap:12px;padding:24px;flex:1}
+.nfc-body h3{font:700 1.35rem/1.2 'Space Grotesk',sans-serif;margin:0}
+.nfc-body .headline{color:var(--blue);font-weight:600;margin:0;font-size:.98rem}
+.nfc-body .desc{color:var(--muted);font-size:.94rem;margin:0}
+.how-title{font:700 .9rem 'Space Grotesk',sans-serif;margin:6px 0 0}
+.how{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.how span{font-size:.8rem;padding:6px 11px;border-radius:99px;border:1px solid rgba(232,196,122,.3);background:rgba(232,196,122,.07);color:#f1d7a1;animation:chip 6s infinite}
+.how span:nth-of-type(2){animation-delay:.6s}.how span:nth-of-type(3){animation-delay:1.2s}.how span:nth-of-type(4){animation-delay:1.8s}
+.how b{color:var(--muted);font-weight:400}
+.buy-row{margin-top:auto;padding-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center}
+.buy-row .price{grid-column:1/-1;font:700 1.6rem 'Space Grotesk',sans-serif}.buy-row .price small{font:500 .8rem 'DM Sans',sans-serif;color:#9f929e;margin-left:6px}
+.buy-row .btn{width:100%;padding:12px}
+.nfc-card .btn-ghost{color:var(--text)}.nfc-card .btn-ghost:hover{border-color:rgba(232,196,122,.55)}.nfc-card .btn.added{color:#79d6a0}
+.btn-buy{background:linear-gradient(115deg,#f0cf8c,#c9894d);color:#1b1306;box-shadow:0 8px 26px rgba(232,196,122,.22)}
+.btn-buy:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.btn-buy.pulse{animation:buyPulse 2.8s infinite}
+.btn.added{border-color:#79d6a0;color:#79d6a0}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);opacity:0;z-index:50;background:#17131c;border:1px solid rgba(121,214,160,.5);color:#fff8ef;padding:12px 18px;border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.45);transition:.35s;pointer-events:none;font-size:.92rem}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes nfcFloat{0%,100%{transform:scale(1.02) translateY(0)}50%{transform:scale(1.045) translateY(-5px)}}
+@keyframes nfcSweep{0%,55%,100%{transform:translateX(-130%)}75%{transform:translateX(130%)}}
+@keyframes wave{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+@keyframes chip{0%,70%,100%{box-shadow:0 0 0 0 rgba(232,196,122,0)}80%{box-shadow:0 0 0 5px rgba(232,196,122,.2);border-color:rgba(232,196,122,.8)}}
+@keyframes buyPulse{0%,70%,100%{box-shadow:0 8px 26px rgba(232,196,122,.22)}85%{box-shadow:0 0 0 8px rgba(232,196,122,.18),0 8px 26px rgba(232,196,122,.3)}}
+.btn:focus-visible,.cart-link:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media(max-width:560px){.nav-actions .btn{display:none}.nfc-grid{grid-template-columns:1fr}.buy-row{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.nfc-photo img,.nfc-photo:after,.nfc-wave i,.how span,.btn-buy.pulse{animation:none!important}}
+</style>
+</head>
+<body>
+<canvas id="ambient-canvas" aria-hidden="true"></canvas>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="LINKORA home">LINK<span>O</span>RA</a>
+    <nav class="navlinks"><a href="#nfc-cards">NFC Cards</a><a href="#gallery">Gallery</a><a href="#benefits">Why Linkora</a><a href="#how">How it works</a><a href="#contact">Contact</a></nav>
+    <div class="nav-actions"><a class="cart-link" href="checkout.html" aria-label="Open cart"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.4a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"/></svg><span class="cart-badge" data-cart-count hidden>0</span></a><a class="btn btn-primary" href="#nfc-cards">Shop NFC cards ↗</a></div>
+  </div>
+</header>
+<main>
+  <section class="wrap hero" id="home">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Smart business, one tap away</div>
+      <h1>Make every<br><span class="gradient">tap count.</span></h1>
+      <p>Meet LINKORA — sleek NFC stands and cards that help your customers review, follow, connect and pay. No app download needed for most NFC-enabled phones.</p>
+      <div class="actions"><a class="btn btn-primary" href="#nfc-cards">Explore NFC cards <span>→</span></a><a class="btn btn-ghost" href="#how">How it works</a></div>
+      <div class="micro">Designed for cafés · salons · stores · creators</div>
+    </div>
+    <div class="product-stage" aria-label="Illustration of a premium NFC acrylic stand">
+      <div class="glow"></div>
+      <div class="stand">
+        <div class="tinybrand">L I N K O R A</div>
+        <div class="tapicon">⌁</div>
+        <h3>Tap. Review.<br>Grow.</h3>
+        <p>Tap your phone here<br>to leave us a review</p>
+        <div class="fakeqr" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <div class="base"></div>
+      <div class="float-tag">✨ Premium acrylic<br><b>Made for your brand</b></div>
+    </div>
+  </section>
+
+  <section id="benefits">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Why LINKORA</div><h2>Small stand. <span class="gradient">Big connection.</span></h2><p>Turn your counter into a simple, smart touchpoint for every customer.</p></div>
+      <div class="features">
+        <article class="feature"><div class="icon">📲</div><h3>Tap to connect</h3><p>Open your chosen link with a compatible NFC phone. QR can provide a handy backup.</p></article>
+        <article class="feature"><div class="icon">✨</div><h3>Made for your brand</h3><p>Custom business name, logo, colours and call-to-action on a clean acrylic design.</p></article>
+        <article class="feature"><div class="icon">📈</div><h3>Built for businesses</h3><p>Ideal for cafés, salons, retail counters, studios, clinics and independent creators.</p></article>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="visual-showcase" id="gallery">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">A closer look</div><h2>Designed to make your brand <span class="gradient">stand out.</span></h2><p>Explore the LINKORA acrylic look — clean, modern and made for real business counters.</p></div>
+      <div class="visual-frame"><img src="linkora-product-showcase.png" alt="LINKORA style acrylic NFC stands and cards in multiple premium designs" loading="lazy"></div>
+      <div class="visual-caption"><div><h2>Premium acrylic. <span class="gradient">One simple tap.</span></h2><p>Review stands, social cards and scan-and-pay display ideas.</p></div><span class="visual-badge">✦ Custom branding available</span></div>
+      <p class="visual-hint">Product image is an illustrative design showcase. Final product appearance and available features may vary.</p>
+    </div>
+  </section>
+
+  <section id="nfc-cards">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">NFC card collection</div><h2>Pick your <span class="gradient">smart card.</span></h2><p>Ek tap se reviews, followers, menu, chats aur payments. Apna card chuniye aur Buy Now dabaiye.</p></div>
+      <div class="nfc-grid" id="nfcGrid"></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Easy as 1-2-3</div><h2>From counter to <span class="gradient">connected.</span></h2><p>Simple setup. Your business, your link.</p></div>
+      <div class="steps">
+        <article class="step"><div class="step-number">01</div><h3>Choose a product</h3><p>Pick a stand or card and tell us which link you want customers to open.</p></article>
+        <article class="step"><div class="step-number">02</div><h3>Customise it</h3><p>Share your business name, logo and destination link for the design.</p></article>
+        <article class="step"><div class="step-number">03</div><h3>Tap & connect</h3><p>Place it on your counter. Customers tap a compatible phone or scan the QR.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">FAQs</div><h2>Good to know.</h2></div>
+      <div class="faq">
+        <details><summary>Does the customer need an app?</summary><p>Usually no. A compatible NFC-enabled phone can open a programmed link. Customers can also scan the QR code if NFC is unavailable or switched off.</p></details>
+        <details><summary>Can I add my own logo and link?</summary><p>Yes. Share your logo, business details and the destination URL when ordering. Final customisation depends on the selected product.</p></details>
+        <details><summary>Will the stand automatically increase reviews?</summary><p>The stand makes it easier to reach your review page, but reviews are written by customers voluntarily. No product can guarantee a specific number of reviews.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div><div class="eyebrow">Let's build your setup</div><h2 style="font:700 clamp(2.2rem,4vw,3.4rem)/1.1 'Space Grotesk';letter-spacing:-.04em;margin:15px 0">Your brand.<br><span class="gradient">One smart tap.</span></h2><p>Tell us what you need. The form opens a WhatsApp message with your product and details filled in.</p><p>📦 Custom branding & bulk enquiries welcome.</p><div class="micro">LINKORA · Connect Smarter.</div></div>
+      <form class="contact-form" id="orderForm">
+        <div class="field"><label for="name">Your name</label><input id="name" name="name" placeholder="Enter your name" required></div>
+        <div class="field"><label for="phone">Mobile number</label><input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" required></div>
+        <div class="field"><label for="address">Delivery address</label><textarea id="address" name="address" placeholder="House / street, area, city, PIN code" required></textarea></div>
+        <div class="field"><label for="business">Business name</label><input id="business" name="business" placeholder="Your shop / business name"></div>
+        <div class="field"><label for="product">Interested in</label><select id="product" name="product"><option>Google Review NFC Card</option><option>Instagram NFC Card</option><option>Digital Menu NFC Card</option><option>WhatsApp NFC Card</option><option>UPI NFC Payment Card</option><option>Custom / bulk order</option></select></div>
+        <div class="field"><label for="link">Link to add (optional)</label><input id="link" name="link" placeholder="Google review / Instagram / website URL"></div>
+        <div class="field"><label for="message">Anything else? (optional)</label><textarea id="message" name="message" placeholder="Logo, quantity, preferred colours…"></textarea></div>
+        <button class="btn btn-primary" type="submit">Send enquiry on WhatsApp ↗</button>
+        <div class="disclaimer">Tap any WhatsApp order button to message LINKORA directly.</div>
+      </form>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap foot"><div><strong>LINKORA</strong> <span>· Connect Smarter.</span></div><div>Smart NFC stands & cards</div><div>© <span id="year"></span> LINKORA</div></div></footer>
+<script src="linkora-shop.js"></script>
+<script id="linkora-cards-js">
+(function(){
+  const S=window.LinkoraShop,grid=document.getElementById('nfcGrid');
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  grid.innerHTML=S.CFG.PRODUCTS.map(p=>`
+    <article class="nfc-card reveal" data-id="${p.id}">
+      <div class="nfc-photo">
+        <img src="${p.img}" alt="${esc(p.name)}" loading="lazy">
+        <span class="nfc-badge">${esc(p.badge)}</span>
+        <span class="nfc-wave" aria-hidden="true"><i></i><i></i><i></i></span>
+      </div>
+      <div class="nfc-body">
+        <h3>${p.icon} ${esc(p.name)}</h3>
+        <p class="headline">${esc(p.headline)}</p>
+        <p class="desc">${esc(p.desc)}</p>
+        <p class="how-title">How it works</p>
+        <div class="how">${p.steps.map((s,i)=>(i?'<b>→</b>':'')+'<span>'+esc(s)+'</span>').join('')}</div>
+        <div class="buy-row">
+          <div class="price">${S.inr(p.price)}<small>per card</small></div>
+          <button class="btn btn-buy pulse" type="button" data-buy="${p.id}">Buy Now</button>
+          <button class="btn btn-ghost" type="button" data-add="${p.id}">Add to cart</button>
+        </div>
+      </div>
+    </article>`).join('');
+
+  const toast=document.createElement('div');toast.className='toast';toast.setAttribute('role','status');document.body.appendChild(toast);
+  let tt;function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),2200)}
+  function bump(){document.querySelectorAll('[data-cart-count]').forEach(b=>{b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump')})}
+
+  grid.addEventListener('click',e=>{
+    const buy=e.target.closest('[data-buy]'),add=e.target.closest('[data-add]');
+    if(buy){S.add(buy.dataset.buy);window.location.href='checkout.html';return}
+    if(add){
+      S.add(add.dataset.add);bump();
+      const p=S.product(add.dataset.add);say('✓ '+p.name+' added to cart');
+      add.classList.add('added');add.textContent='Added ✓';
+      setTimeout(()=>{add.classList.remove('added');add.textContent='Add to cart'},1600);
+    }
+  });
+
+  // gentle 3D tilt on pointer devices
+  if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+    grid.querySelectorAll('.nfc-photo').forEach(box=>{
+      const img=box.querySelector('img');
+      box.addEventListener('pointermove',e=>{const r=box.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;img.style.transform=`scale(1.08) rotateY(${x*6}deg) rotateX(${-y*6}deg)`});
+      box.addEventListener('pointerleave',()=>{img.style.transform=''});
+    });
+  }
+  // reveal on scroll
+  if('IntersectionObserver'in window){
+    const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('is-visible');io.unobserve(en.target)}}),{threshold:.1});
+    grid.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  }else grid.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-visible'));
+  window.addEventListener('pageshow',()=>S.syncBadges());
+})();
+</script>
+<script>
+  // LINKORA WhatsApp number (India country code included; no + or spaces).
+  const WHATSAPP_NUMBER = "919359258557";
+
+  function openWhatsApp(message) {
+    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  document.querySelectorAll(".order-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      openWhatsApp("Hi LINKORA! I am interested in: " + button.dataset.product + ". Please share details.");
+    });
+  });
+
+  document.getElementById("orderForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const business = document.getElementById("business").value.trim() || "Not provided";
+    const product = document.getElementById("product").value;
+    const link = document.getElementById("link").value.trim() || "Not provided";
+    const message = document.getElementById("message").value.trim() || "Not provided";
+    openWhatsApp("Hi LINKORA! I would like to enquire.\nName: " + name + "\nMobile: " + phone + "\nDelivery address: " + address + "\nBusiness: " + business + "\nProduct: " + product + "\nLink to add: " + link + "\nNotes: " + message);
+  });
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<script id="linkora-ambient-animation">
+(()=>{const c=document.getElementById('ambient-canvas');if(!c)return;const ctx=c.getContext('2d');let w=0,h=0,pts=[];const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;function resize(){w=c.width=window.innerWidth*devicePixelRatio;h=c.height=window.innerHeight*devicePixelRatio;c.style.width=window.innerWidth+'px';c.style.height=window.innerHeight+'px';pts=Array.from({length:Math.min(55,Math.floor(window.innerWidth/22))},()=>({x:Math.random()*w,y:Math.random()*h,r:(Math.random()*1.8+.5)*devicePixelRatio,v:(Math.random()*.25+.08)*devicePixelRatio,a:Math.random()*.5+.12}))}function draw(){ctx.clearRect(0,0,w,h);for(const p of pts){ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(232,196,122,${p.a})`;ctx.fill();if(!reduced){p.y-=p.v;if(p.y<0){p.y=h;p.x=Math.random()*w}}}if(!reduced)requestAnimationFrame(draw)}window.addEventListener('resize',resize);resize();draw()})();
+</script>
+
+</body>
+</html>

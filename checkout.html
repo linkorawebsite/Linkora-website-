@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0b0a0e" />
+<title>Checkout — LINKORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0a0e;--panel:#17131c;--text:#fff8ef;--muted:#b8aebc;--gold:#e8c47a;--rose:#f1a9bd;--line:rgba(255,255,255,.1);--ok:#79d6a0;--err:#f08a8a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 80% -10%,rgba(232,196,122,.14),transparent 40%),linear-gradient(180deg,#0b0a0e,#100d13 60%,#09080b);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}h1,h2,h3,p{margin-top:0}
+.wrap{width:min(1100px,92%);margin:auto}
+header{border-bottom:1px solid var(--line);background:rgba(11,10,14,.85);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+.brand{font:700 1.4rem 'Space Grotesk',sans-serif;letter-spacing:.12em}.brand span{color:var(--gold)}
+.back{color:var(--muted);font-size:.92rem}.back:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 20px;border-radius:12px;border:1px solid transparent;font-weight:700;cursor:pointer;transition:transform .25s,filter .25s,border-color .25s}
+.btn-gold{background:linear-gradient(115deg,#f0cf8c,#c9894d);color:#1b1306;box-shadow:0 8px 28px rgba(232,196,122,.22)}.btn-gold:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.btn-ghost{border-color:var(--line);background:rgba(255,255,255,.04);color:var(--text)}.btn-ghost:hover{border-color:rgba(232,196,122,.5)}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+main{padding:44px 0 80px}
+h1{font:700 clamp(1.9rem,4vw,2.8rem)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.03em;margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:30px}
+.layout{display:grid;grid-template-columns:1.25fr .85fr;gap:26px;align-items:start}
+.panel{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:26px;margin-bottom:20px}
+.panel h2{font:700 1.2rem 'Space Grotesk',sans-serif;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(232,196,122,.14);border:1px solid rgba(232,196,122,.4);color:var(--gold);font-size:.9rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:14px}.field label{display:block;font-size:.85rem;color:#d9cbd4;margin-bottom:6px}.field label i{color:var(--err);font-style:normal}
+.field input,.field select,.field textarea{width:100%;padding:12px 13px;color:var(--text);background:#100d13;border:1px solid var(--line);border-radius:10px;transition:border-color .25s,box-shadow .25s}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(232,196,122,.13)}
+.field input:user-invalid,.field textarea:user-invalid{border-color:var(--err)}
+.field textarea{resize:vertical;min-height:80px}.hint{font-size:.8rem;color:#9f929e;margin-top:5px}
+.pay-options{display:grid;gap:12px}
+.pay-opt{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:14px;cursor:pointer;background:rgba(255,255,255,.02);transition:border-color .25s,background .25s}
+.pay-opt:hover{border-color:rgba(232,196,122,.4)}
+.pay-opt input{accent-color:#e8c47a;width:18px;height:18px}
+.pay-opt:has(input:checked){border-color:var(--gold);background:rgba(232,196,122,.07)}
+.pay-opt b{display:block}.pay-opt span{color:var(--muted);font-size:.86rem}
+.pay-panel{margin-top:16px;padding:20px;border:1px dashed rgba(232,196,122,.4);border-radius:14px;background:rgba(232,196,122,.04);animation:open .35s ease}
+.pay-panel[hidden]{display:none}
+.upi-top{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;margin-bottom:16px}
+.qr{background:#fff;padding:10px;border-radius:12px;width:156px;height:156px;display:grid;place-items:center}.qr img,.qr canvas{width:100%!important;height:100%!important}
+.upi-id{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0 12px}.upi-id code{background:#100d13;border:1px solid var(--line);padding:6px 10px;border-radius:8px;font-size:.92rem}
+.small-btn{padding:7px 12px;font-size:.82rem;border-radius:9px}
+.steps-list{margin:0 0 14px;padding-left:18px;color:var(--muted);font-size:.9rem}
+.summary{position:sticky;top:90px}
+.line{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.line img{width:64px;height:56px;object-fit:cover;border-radius:9px}
+.line strong{display:block;font-size:.92rem;line-height:1.3}.line .lp{display:block;color:var(--muted);font-size:.84rem}
+.qty{display:inline-flex;align-items:center;gap:4px;margin-top:6px}.qty button{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);cursor:pointer}.qty button:hover{border-color:var(--gold)}.qty span{min-width:26px;text-align:center;font-weight:700}
+.qty .rm{width:auto;padding:0 9px;margin-left:6px;font-size:.76rem;color:#e9a8a8}
+.totals{display:flex;justify-content:space-between;align-items:baseline;padding-top:16px;font:700 1.4rem 'Space Grotesk',sans-serif}.totals small{font:500 .8rem 'DM Sans';color:#9f929e}
+.note{font-size:.8rem;color:#9f929e;margin-top:12px}
+.err{color:var(--err);font-size:.85rem;margin-top:8px;min-height:1.2em}
+.empty{text-align:center;padding:70px 10px}.empty h2{font:700 1.8rem 'Space Grotesk'}.empty p{color:var(--muted);margin-bottom:22px}
+/* confirmation */
+.confirm{max-width:640px;margin:10px auto 0;text-align:center}
+.tick{width:104px;height:104px;margin:0 auto 18px}
+.tick circle{fill:none;stroke:var(--ok);stroke-width:4;stroke-dasharray:290;stroke-dashoffset:290;animation:draw .7s .1s ease forwards}
+.tick path{fill:none;stroke:var(--ok);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:draw .45s .75s ease forwards}
+.confirm h1{margin-bottom:8px}
+.oid{display:inline-block;margin:10px 0 22px;padding:8px 16px;border-radius:99px;border:1px solid rgba(232,196,122,.4);background:rgba(232,196,122,.08);color:#f6dfae;font-weight:700;letter-spacing:.04em}
+.confirm .panel{text-align:left}
+.row{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.94rem}.row:last-child{border:0}.row span:first-child{color:var(--muted)}.row span:last-child{text-align:right}
+.confirm-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+.dots{position:fixed;inset:0;pointer-events:none;z-index:30;overflow:hidden}.dots i{position:absolute;top:-12px;width:8px;height:12px;border-radius:2px;opacity:.9;animation:fall linear forwards}
+@keyframes draw{to{stroke-dashoffset:0}}@keyframes open{from{opacity:0;transform:translateY(8px)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:0}}
+@media(max-width:860px){.layout{grid-template-columns:1fr}.summary{position:static;order:-1}}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}.upi-top{grid-template-columns:1fr;justify-items:start}.panel{padding:20px}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important}.dots{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="index.html">LINK<span>O</span>RA</a><a class="back" href="index.html#nfc-cards">← Continue shopping</a></div></header>
+
+<main class="wrap" id="app"></main>
+
+<script src="linkora-shop.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+  const S=window.LinkoraShop, CFG=S.CFG, app=document.getElementById('app');
+  const ORDERS_KEY='linkora_orders_v1';
+  const draftId='LNK-'+new Date().toISOString().slice(2,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  let placed=false;
+
+  function emptyView(){
+    app.innerHTML=`<div class="empty"><h2>Your cart is empty</h2><p>Pick an NFC card to start your order.</p><a class="btn btn-gold" href="index.html#nfc-cards">Browse NFC cards</a></div>`;
+  }
+
+  function formView(){
+    app.innerHTML=`
+    <h1>Checkout</h1><p class="sub">Two quick steps: your details, then payment.</p>
+    <form id="form" class="layout" novalidate>
+      <div>
+        <section class="panel">
+          <h2><span class="num">1</span>Your details</h2>
+          <div class="grid2">
+            <div class="field"><label for="name">Full name <i>*</i></label><input id="name" required autocomplete="name" placeholder="Your name"></div>
+            <div class="field"><label for="phone">Mobile number <i>*</i></label><input id="phone" required type="tel" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" autocomplete="tel-national" placeholder="10-digit mobile number"></div>
+          </div>
+          <div class="field"><label for="email">Email (optional)</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
+          <div class="field"><label for="business">Business name <i>*</i></label><input id="business" required placeholder="Name to print on the card"></div>
+          <div class="field"><label for="address">Delivery address <i>*</i></label><textarea id="address" required autocomplete="street-address" placeholder="House / street, area"></textarea></div>
+          <div class="grid2">
+            <div class="field"><label for="city">City <i>*</i></label><input id="city" required autocomplete="address-level2"></div>
+            <div class="field"><label for="pin">PIN code <i>*</i></label><input id="pin" required inputmode="numeric" maxlength="6" pattern="[1-9][0-9]{5}" autocomplete="postal-code"></div>
+          </div>
+          <div class="field"><label for="links">Link(s) to program on your card(s)</label><textarea id="links" placeholder="Google review link, Instagram profile, menu link, WhatsApp number, UPI ID… (you can also send these later on WhatsApp)"></textarea></div>
+        </section>
+
+        <section class="panel">
+          <h2><span class="num">2</span>Payment method</h2>
+          <div class="pay-options" role="radiogroup" aria-label="Payment method">
+            <label class="pay-opt"><input type="radio" name="pay" value="upi" checked><div><b>UPI</b><span>GPay, PhonePe, Paytm, BHIM or any UPI app</span></div></label>
+            <label class="pay-opt"><input type="radio" name="pay" value="cod"><div><b>Cash on delivery</b><span>Pay when your order arrives</span></div></label>
+          </div>
+
+          <div class="pay-panel" id="upiPanel">
+            <div class="upi-top">
+              <div class="qr" id="qr" aria-label="UPI payment QR code"></div>
+              <div>
+                <div style="color:var(--muted);font-size:.86rem">Pay to</div>
+                <div class="upi-id"><code id="upiId">${esc(CFG.UPI_ID)}</code><button class="btn btn-ghost small-btn" type="button" id="copyUpi">Copy</button></div>
+                <a class="btn btn-gold" id="upiLink" href="#">Pay <span id="upiAmt"></span> with UPI app</a>
+              </div>
+            </div>
+            <ol class="steps-list"><li>Pay the exact amount using the button or QR code.</li><li>Copy the 12-digit UPI transaction ID (UTR) from your payment app.</li><li>Enter it below and place your order.</li></ol>
+            <div class="field" style="margin-bottom:0"><label for="utr">UPI transaction ID (12 digits) <i>*</i></label><input id="utr" inputmode="numeric" maxlength="12" pattern="[0-9]{12}" placeholder="e.g. 412345678901"></div>
+          </div>
+          <div class="pay-panel" id="codPanel" hidden><p style="margin:0;color:var(--muted)">You will pay in cash when the order is delivered. We’ll confirm delivery details with you on WhatsApp.</p></div>
+          <div class="err" id="err" role="alert"></div>
+        </section>
+        <button class="btn btn-gold" type="submit" id="placeBtn" style="width:100%;font-size:1.05rem">Place order</button>
+        <p class="note">By placing the order, your details open in a WhatsApp message to LINKORA so we can confirm it.</p>
+      </div>
+      <aside class="panel summary"><h2>Order summary</h2><div id="lines"></div><div class="totals"><span>Total</span><span id="total"></span></div><p class="note">Includes all items. Delivery details are confirmed on WhatsApp.</p></aside>
+    </form>`;
+    renderLines();bindForm();
+  }
+
+  function renderLines(){
+    const ls=S.lines();
+    if(!ls.length&&!placed){emptyView();return}
+    const box=document.getElementById('lines');if(!box)return;
+    box.innerHTML=ls.map(l=>`<div class="line"><img src="${l.img}" alt=""><div><strong>${esc(l.name)}</strong><span class="lp">${S.inr(l.price)} × ${l.qty} = ${S.inr(l.sub)}</span><div class="qty"><button type="button" data-dec="${l.id}" aria-label="Decrease quantity">−</button><span>${l.qty}</span><button type="button" data-inc="${l.id}" aria-label="Increase quantity">+</button><button type="button" class="rm" data-rm="${l.id}">Remove</button></div></div></div>`).join('');
+    document.getElementById('total').textContent=S.inr(S.total());
+    updateUpi();
+  }
+
+  function upiUrl(){
+    const amt=S.total().toFixed(2);
+    return 'upi://pay?pa='+encodeURIComponent(CFG.UPI_ID)+'&pn='+encodeURIComponent(CFG.UPI_NAME)+'&am='+amt+'&cu=INR&tn='+encodeURIComponent('LINKORA '+draftId);
+  }
+  function updateUpi(){
+    const link=document.getElementById('upiLink');if(!link)return;
+    link.href=upiUrl();document.getElementById('upiAmt').textContent=S.inr(S.total());
+    const qr=document.getElementById('qr');qr.innerHTML='';
+    if(window.QRCode){try{new QRCode(qr,{text:upiUrl(),width:136,height:136,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M})}catch(e){qr.textContent='QR unavailable'}}
+    else{qr.innerHTML='<span style="color:#333;font-size:.8rem;text-align:center">Use the UPI ID or button</span>'}
+  }
+
+  function bindForm(){
+    const form=document.getElementById('form'),err=document.getElementById('err'),utr=document.getElementById('utr');
+    const method=()=>form.querySelector('input[name=pay]:checked').value;
+    function syncPay(){
+      const upi=method()==='upi';
+      document.getElementById('upiPanel').hidden=!upi;document.getElementById('codPanel').hidden=upi;
+      utr.required=upi;err.textContent='';
+      document.getElementById('placeBtn').textContent=upi?'Place order':'Place order (cash on delivery)';
+    }
+    form.querySelectorAll('input[name=pay]').forEach(r=>r.addEventListener('change',syncPay));syncPay();
+    ['phone','pin','utr'].forEach(id=>document.getElementById(id).addEventListener('input',e=>{e.target.value=e.target.value.replace(/\D/g,'')}));
+    document.getElementById('copyUpi').addEventListener('click',async e=>{
+      try{await navigator.clipboard.writeText(CFG.UPI_ID);e.target.textContent='Copied ✓'}catch(_){e.target.textContent='Copy manually'}
+      setTimeout(()=>e.target.textContent='Copy',1600);
+    });
+    document.getElementById('lines').addEventListener('click',e=>{
+      const t=e.target,l=S.lines(),f=id=>l.find(x=>x.id===id);
+      if(t.dataset.inc)S.setQty(t.dataset.inc,f(t.dataset.inc).qty+1);
+      if(t.dataset.dec)S.setQty(t.dataset.dec,f(t.dataset.dec).qty-1);
+      if(t.dataset.rm)S.setQty(t.dataset.rm,0);
+    });
+    form.addEventListener('submit',e=>{
+      e.preventDefault();
+      if(!form.checkValidity()){
+        const bad=form.querySelector(':invalid');
+        err.textContent=bad&&bad.id==='utr'?'Enter the 12-digit UPI transaction ID from your payment app.':'Please fill the highlighted fields correctly (10-digit mobile, 6-digit PIN).';
+        if(bad){bad.focus()}return;
+      }
+      place(method());
+    });
+  }
+
+  function place(method){
+    const v=id=>document.getElementById(id).value.trim();
+    const ls=S.lines();if(!ls.length)return;
+    const order={
+      id:draftId,date:new Date().toISOString(),
+      items:ls.map(l=>({name:l.name,qty:l.qty,price:l.price})),total:S.total(),
+      customer:{name:v('name'),phone:v('phone'),email:v('email'),business:v('business'),address:v('address'),city:v('city'),pin:v('pin'),links:v('links')},
+      payment:method==='upi'?{method:'UPI',to:CFG.UPI_ID,utr:v('utr')}:{method:'Cash on delivery'}
+    };
+    try{const all=JSON.parse(localStorage.getItem(ORDERS_KEY)||'[]');all.push(order);localStorage.setItem(ORDERS_KEY,JSON.stringify(all))}catch(_){}
+    placed=true;S.clear();
+    confirmView(order);
+    openWhatsApp(order);   // runs inside the click, so browsers allow the new tab
+  }
+
+  function waText(o){
+    const c=o.customer;
+    return ['*New LINKORA order* 🎉','Order ID: '+o.id,'',
+      '*Items*',...o.items.map(i=>'• '+i.name+' × '+i.qty+' = '+S.inr(i.price*i.qty)),
+      '*Total: '+S.inr(o.total)+'*','',
+      '*Payment:* '+o.payment.method+(o.payment.utr?'\nUPI to: '+o.payment.to+'\nTransaction ID: '+o.payment.utr:''),'',
+      '*Customer*','Name: '+c.name,'Mobile: '+c.phone,'Email: '+(c.email||'-'),'Business: '+c.business,
+      'Address: '+c.address+', '+c.city+' - '+c.pin,'Links to program: '+(c.links||'-')].join('\n');
+  }
+  function waUrl(o){return 'https://wa.me/'+CFG.WHATSAPP+'?text='+encodeURIComponent(waText(o))}
+  function openWhatsApp(o){window.open(waUrl(o),'_blank','noopener')}
+
+  function confirmView(o){
+    window.scrollTo({top:0,behavior:'smooth'});
+    const c=o.customer, upi=o.payment.method==='UPI';
+    app.innerHTML=`<section class="confirm">
+      <svg class="tick" viewBox="0 0 104 104" aria-hidden="true"><circle cx="52" cy="52" r="46"/><path d="M32 54l14 14 27-30"/></svg>
+      <h1>Order booked!</h1>
+      <p class="sub" style="margin-bottom:0">Thank you, ${esc(c.name)}. Your order has been received.</p>
+      <div class="oid">Order ID: ${esc(o.id)}</div>
+      <div class="panel">
+        ${o.items.map(i=>`<div class="row"><span>${esc(i.name)} × ${i.qty}</span><span>${S.inr(i.price*i.qty)}</span></div>`).join('')}
+        <div class="row"><span><b style="color:var(--text)">Total</b></span><span><b>${S.inr(o.total)}</b></span></div>
+        <div class="row"><span>Payment</span><span>${upi?'UPI — transaction ID '+esc(o.payment.utr)+' (we will verify it)':'Cash on delivery'}</span></div>
+        <div class="row"><span>Deliver to</span><span>${esc(c.address)}, ${esc(c.city)} - ${esc(c.pin)}</span></div>
+        <div class="row"><span>Contact</span><span>${esc(c.phone)}</span></div>
+      </div>
+      <p style="color:var(--muted)">If WhatsApp didn’t open, tap the button below and press <b>Send</b> so LINKORA gets your details. We’ll confirm your order there.</p>
+      <div class="confirm-actions"><a class="btn btn-gold" href="${waUrl(o)}" target="_blank" rel="noopener">Send details on WhatsApp</a><a class="btn btn-ghost" href="index.html">Back to home</a></div>
+    </section><div class="dots" aria-hidden="true"></div>`;
+    const d=app.querySelector('.dots'),cols=['#e8c47a','#f1a9bd','#79d6a0','#fff8ef'];
+    for(let i=0;i<46;i++){const p=document.createElement('i');p.style.left=Math.random()*100+'%';p.style.background=cols[i%4];p.style.animationDuration=(2+Math.random()*2.2)+'s';p.style.animationDelay=(Math.random()*.8)+'s';d.appendChild(p)}
+    setTimeout(()=>d.remove(),5500);
+  }
+
+  S.onChange(()=>{if(!placed)renderLines()});
+  if(S.count()===0)emptyView();else formView();
+})();
+</script>
+</body>
+</html>
